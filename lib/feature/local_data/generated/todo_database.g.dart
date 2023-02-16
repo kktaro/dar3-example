@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of '../database_define.dart';
+part of '../todo_database.dart';
 
 // ignore_for_file: type=lint
 class $TodosTable extends Todos with TableInfo<$TodosTable, Todo> {

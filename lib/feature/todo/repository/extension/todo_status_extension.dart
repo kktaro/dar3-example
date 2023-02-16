@@ -6,4 +6,10 @@ extension TodoStatusExtension on TodoStatus {
      InProgress() => 'in_progress',
      Finished() => 'finished',
   };
+
+  static TodoStatus fromDTO(String status) => switch(status) {
+    'not_started' => NotStarted(),
+    'in_progress' => InProgress(),
+    'finished' => Finished(),
+  };
 }

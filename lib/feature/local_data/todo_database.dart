@@ -6,7 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as path;
 
-part 'generated/database_define.g.dart';
+part 'generated/todo_database.g.dart';
 
 final todosDatabaseProvider = Provider<TodosDatabase>((ref) {
   return TodosDatabase();
@@ -34,6 +34,8 @@ class TodosDatabase extends _$TodosDatabase {
 
   Future<void> deleteSingle(Todo todo) =>
       (delete(todos)..where((tbl) => tbl.id.equals(todo.id))).go();
+
+  Stream<List<Todo>> watchAll() => select(todos).watch();
 }
 
 LazyDatabase _openConnection() {
