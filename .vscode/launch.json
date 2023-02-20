@@ -6,7 +6,7 @@
             "request": "launch",
             "type": "dart",
             "args": [
-                "--enable-experiment=records",
+                "--enable-experiment=records,class-modifiers,sealed-class,patterns",
             ]
         },
         {
@@ -15,7 +15,7 @@
             "type": "dart",
             "flutterMode": "profile",
             "args": [
-                "--enable-experiment=records",
+                "--enable-experiment=record,class-modifiers,sealed-classs,patterns",
             ]
         },
         {
@@ -24,7 +24,7 @@
             "type": "dart",
             "flutterMode": "release",
             "args": [
-                "--enable-experiment=records",
+                "--enable-experiment=records,class-modifiers,sealed-class,patterns",
             ]
         }
     ]

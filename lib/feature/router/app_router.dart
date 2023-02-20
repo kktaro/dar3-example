@@ -1,6 +1,6 @@
 import 'package:dart3_sample/const/app_theme.dart';
-import 'package:dart3_sample/feature/todo_create/todo_create_screen.dart';
-import 'package:dart3_sample/feature/todo_list/todo_list_screen.dart';
+import 'package:dart3_sample/feature/todo/presentation/todo_create/todo_create_screen.dart';
+import 'package:dart3_sample/feature/todo/presentation/todo_list/todo_list_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';

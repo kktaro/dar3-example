@@ -33,3 +33,7 @@ class TodoCreateScreen extends ConsumerWidget {
     );
   }
 }
+
+interface class AA {
+  
+}
