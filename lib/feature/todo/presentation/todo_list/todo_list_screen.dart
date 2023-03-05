@@ -1,4 +1,5 @@
 import 'package:dart3_sample/feature/todo/domain/usecase/observe_todo_usecase.dart';
+import 'package:dart3_sample/feature/todo/presentation/todo_list/widget/todo_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -30,13 +31,22 @@ class TodoListScreen extends ConsumerWidget {
                 return const Center(child: Text('TODO is Empty'));
               }
 
-              return ListView.builder(
+              return ListView.separated(
                 padding: const EdgeInsets.all(4),
                 itemCount: todos.length,
                 itemBuilder: (context, index) {
                   final todo = todos[index];
-                  return Text('${todo.title}, ${todo.id}');
+                  return TodoItem(
+                    id: todo.id,
+                    title: todo.title,
+                    content: todo.content,
+                    status: todo.progressStatus,
+                    updatedAt: todo.updatedAt,
+                    onClickEdit: (p0) {},
+                    onClickDelete: (p0) {},
+                  );
                 },
+                separatorBuilder: (_, __) => const Divider(),
               );
             }
           },
