@@ -18,8 +18,6 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: 'master'
-          flutter-version: '3.7.1'
-          cache: true
           
       - name: run Flutter doctor
         run: flutter doctor -v
