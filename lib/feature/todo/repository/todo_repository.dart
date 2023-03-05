@@ -16,7 +16,7 @@ final class TodoRepository {
 
   Future<int> update(domain.Todo todo) => _database.upsert(todo.toUniqueDTO());
 
-  Future<void> delete(domain.Todo todo) => _database.deleteSingle(todo.toUniqueDTO());
+  Future<void> delete(int id) => _database.deleteSingle(id);
 
   Stream<List<domain.Todo>> watchAll() => _database.watchAll()
     .map((event) => event.map((e) => DomainTodoExtension.fromDTO(e)).toList());
