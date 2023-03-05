@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:riverpod/riverpod.dart';
 
 final lightThemeProvider = Provider<AppTheme>((_) => AppTheme.light());
@@ -18,5 +19,9 @@ class AppTheme {
         brightness: brightness,
         colorSchemeSeed: Colors.green,
         useMaterial3: true,
+        textTheme: GoogleFonts.mPlusRounded1cTextTheme(),
+        inputDecorationTheme: const InputDecorationTheme(
+          border: OutlineInputBorder(),
+        ),
       );
 }

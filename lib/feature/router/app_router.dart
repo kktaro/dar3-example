@@ -28,7 +28,7 @@ final GoRouter _router = GoRouter(
       routes: [
         GoRoute(
           path: 'create',
-          builder: (context, state) => const TodoCreateScreen(),
+          builder: (context, state) => TodoCreateScreen(),
         ),
       ],
     ),
