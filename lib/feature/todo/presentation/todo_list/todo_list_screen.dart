@@ -1,3 +1,4 @@
+import 'package:dart3_sample/feature/common_widget/message_alert_dialog.dart';
 import 'package:dart3_sample/feature/todo/domain/usecase/delete_todo_usecase.dart';
 import 'package:dart3_sample/feature/todo/domain/usecase/observe_todo_usecase.dart';
 import 'package:dart3_sample/feature/todo/presentation/todo_list/widget/todo_item.dart';
@@ -47,22 +48,14 @@ class TodoListScreen extends ConsumerWidget {
                     onClickDelete: (id) {
                       showDialog(
                         context: context,
-                        builder: (_) => AlertDialog(
-                          title: const Text('Todoを削除'),
-                          content: Text('${todo.title} を削除してもよろしいですか？'),
-                          actions: [
-                            TextButton(
-                              onPressed: () => Navigator.of(context).pop(),
-                              child: const Text('キャンセル'),
-                            ),
-                            TextButton(
-                              onPressed: () {
-                                ref.read(deleteTodoUsecaseProvider).execute(id);
-                                Navigator.of(context).pop();
-                              },
-                              child: const Text('OK'),
-                            )
-                          ],
+                        builder: (_) => MessageAlertDialog(
+                          title: 'Todoを削除',
+                          message: '${todo.title} を削除してもよろしいですか？',
+                          onCancel: () => Navigator.of(context).pop(),
+                          onApprove: () {
+                            ref.read(deleteTodoUsecaseProvider).execute(id);
+                            Navigator.of(context).pop();
+                          },
                         ),
                       );
                     },
