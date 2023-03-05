@@ -80,6 +80,9 @@ class TodoCreateScreen extends ConsumerWidget {
                         onPressed: () {
                           if (!formKey.currentState!.validate()) return;
 
+                          ref
+                              .read(createTodoNotifierProvider.notifier)
+                              .addTodo();
                           context.go('/');
                         },
                         icon: const Icon(Icons.add),

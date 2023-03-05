@@ -12,7 +12,7 @@ sealed class TodoStatus{
       return NotStarted();
     } else if (statusString == inProgress) {
       return InProgress();
-    } else if (statusString == finished    ) {
+    } else if (statusString == finished) {
       return Finished();
     } else {
       throw StateError('無効な設定値です');

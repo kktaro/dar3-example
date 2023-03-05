@@ -1,15 +1,25 @@
 import 'package:dart3_sample/feature/local_data/todo_database.dart';
 import 'package:dart3_sample/feature/todo/repository/extension/todo_status_extension.dart';
 import 'package:dart3_sample/feature/todo/domain/value/todo.dart' as domain;
+import 'package:drift/drift.dart';
 
 extension DomainTodoExtension on domain.Todo {
-  Todo toDTO() {
-    return Todo(
-      id: id,
-      title: title,
-      content: content,
-      status: progressStatus.toDatabaseObject(),
-      updatedAt: updatedAt,
+  TodosCompanion toDTO() {
+    return TodosCompanion(
+      title: Value(title),
+      content: Value(content),
+      status: Value(progressStatus.toDatabaseObject()),
+      updatedAt: Value(updatedAt),
+    );
+  }
+
+  TodosCompanion toUniqueDTO() {
+    return TodosCompanion(
+      id: Value(id),
+      title: Value(title),
+      content: Value(content),
+      status: Value(progressStatus.toDatabaseObject()),
+      updatedAt: Value(updatedAt),
     );
   }
 

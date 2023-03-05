@@ -30,10 +30,11 @@ class TodosDatabase extends _$TodosDatabase {
   @override
   int get schemaVersion => 1;
 
-  Future<int> upsert(Todo todo) => into(todos).insertOnConflictUpdate(todo);
+  Future<int> upsert(TodosCompanion entity) =>
+      into(todos).insertOnConflictUpdate(entity);
 
-  Future<void> deleteSingle(Todo todo) =>
-      (delete(todos)..where((tbl) => tbl.id.equals(todo.id))).go();
+  Future<void> deleteSingle(TodosCompanion entity) =>
+      (delete(todos)..where((tbl) => tbl.id.equals(entity.id.value))).go();
 
   Stream<List<Todo>> watchAll() => select(todos).watch();
 }

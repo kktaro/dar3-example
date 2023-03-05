@@ -12,9 +12,11 @@ final class TodoRepository {
 
   final TodosDatabase _database;
 
-  Future<int> upsert(domain.Todo todo) => _database.upsert(todo.toDTO());
+  Future<int> add(domain.Todo todo) => _database.upsert(todo.toDTO());
 
-  Future<void> delete(domain.Todo todo) => _database.deleteSingle(todo.toDTO());
+  Future<int> update(domain.Todo todo) => _database.upsert(todo.toUniqueDTO());
+
+  Future<void> delete(domain.Todo todo) => _database.deleteSingle(todo.toUniqueDTO());
 
   Stream<List<domain.Todo>> watchAll() => _database.watchAll()
     .map((event) => event.map((e) => DomainTodoExtension.fromDTO(e)).toList());
