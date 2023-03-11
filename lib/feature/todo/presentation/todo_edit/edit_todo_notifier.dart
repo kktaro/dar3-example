@@ -27,15 +27,11 @@ final class EditTodoNotifier extends StateNotifier<AsyncValue<Todo>> {
   final titleController = TextEditingController(text: '');
   final contentController = TextEditingController(text: '');
 
-  String? validateTitle(String? value) => Todo.validateTitle(value);
-
   void updateTitle(String value) {
     if (!state.hasValue) return;
 
     state = AsyncData(state.requireValue.copyWith(title: value));
   }
-
-  String? validateContent(String? value) => Todo.validateContent(value);
 
   void updateContent(String value) {
     if (!state.hasValue) return;
