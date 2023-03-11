@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-class TodoListScreen extends ConsumerWidget {
+final class TodoListScreen extends ConsumerWidget {
   const TodoListScreen({super.key});
 
   @override
@@ -34,7 +34,12 @@ class TodoListScreen extends ConsumerWidget {
               }
 
               return ListView.separated(
-                padding: const EdgeInsets.all(4),
+                padding: const EdgeInsets.only(
+                  left: 8,
+                  right: 8,
+                  top: 4,
+                  bottom: 80,
+                ),
                 itemCount: todos.length,
                 itemBuilder: (context, index) {
                   final todo = todos[index];
