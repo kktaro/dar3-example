@@ -11,5 +11,5 @@ final class DeleteTodoUsecase {
   );
   final TodoRepository _todoRepository;
 
-  void execute(int id) => _todoRepository.delete(id);
+  Future<void> execute(int id) => _todoRepository.delete(id);
 }

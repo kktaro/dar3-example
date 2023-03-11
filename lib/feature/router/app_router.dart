@@ -1,5 +1,6 @@
 import 'package:dart3_sample/const/app_theme.dart';
 import 'package:dart3_sample/feature/todo/presentation/todo_create/todo_create_screen.dart';
+import 'package:dart3_sample/feature/todo/presentation/todo_edit/todo_edit_screen.dart';
 import 'package:dart3_sample/feature/todo/presentation/todo_list/todo_list_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -29,6 +30,12 @@ final GoRouter _router = GoRouter(
         GoRoute(
           path: 'create',
           builder: (context, state) => TodoCreateScreen(),
+        ),
+        GoRoute(
+          path: 'edit/:todoId',
+          builder: (context, state) => TodoEditScreen(
+            todoId: int.parse(state.params['todoId']!),
+          ),
         ),
       ],
     ),

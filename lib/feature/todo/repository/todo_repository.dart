@@ -20,4 +20,6 @@ final class TodoRepository {
 
   Stream<List<domain.Todo>> watchAll() => _database.watchAll()
     .map((event) => event.map((e) => DomainTodoExtension.fromDTO(e)).toList());
+
+  Future<domain.Todo> fetch(int id) async => DomainTodoExtension.fromDTO(await _database.fetchSingle(id));
 }

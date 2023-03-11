@@ -28,21 +28,13 @@ final class CreateTodoNotifier extends StateNotifier<Todo> {
   final titleController = TextEditingController(text: '');
   final contentController = TextEditingController(text: '');
 
-  String? validateTitle(String? value) {
-    if (value?.isEmpty ?? true) return 'タイトルを入力してください';
-    
-    return null;
-  }
+  String? validateTitle(String? value) => Todo.validateTitle(value);
 
   void updateTitle(String value) {
     state = state.copyWith(title: value);
   }
 
-  String? validateContent(String? value) {
-    if (value?.isEmpty ?? true) return '内容を入力してください';
-
-    return null;
-  }
+  String? validateContent(String? value) => Todo.validateContent(value);
 
   void updateContent(String value) {
     state = state.copyWith(content: value);

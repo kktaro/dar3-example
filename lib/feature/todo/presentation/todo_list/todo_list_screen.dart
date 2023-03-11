@@ -44,7 +44,9 @@ class TodoListScreen extends ConsumerWidget {
                     content: todo.content,
                     status: todo.progressStatus,
                     updatedAt: todo.updatedAt,
-                    onClickEdit: (p0) {},
+                    onClickEdit: (id) {
+                      context.push('/edit/$id');
+                    },
                     onClickDelete: (id) {
                       showDialog(
                         context: context,

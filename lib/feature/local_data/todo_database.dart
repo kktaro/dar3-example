@@ -37,6 +37,9 @@ class TodosDatabase extends _$TodosDatabase {
       (delete(todos)..where((tbl) => tbl.id.equals(id))).go();
 
   Stream<List<Todo>> watchAll() => select(todos).watch();
+
+  Future<Todo> fetchSingle(int id) =>
+      (select(todos)..where((tbl) => tbl.id.equals(id))).getSingle();
 }
 
 LazyDatabase _openConnection() {

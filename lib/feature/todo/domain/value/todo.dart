@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 final class Todo {
   const Todo({
     required this.id,
-    required this.title, 
-    required this.content, 
+    required this.title,
+    required this.content,
     required this.progressStatus,
     required this.updatedAt,
   });
@@ -23,11 +23,24 @@ final class Todo {
     String? content,
     TodoStatus? progressStatus,
     DateTime? updatedAt,
-  }) => Todo(
-    id: id ?? this.id,
-    title: title ?? this.title,
-    content: content ?? this.content,
-    progressStatus: progressStatus ?? this.progressStatus,
-    updatedAt: updatedAt ?? this.updatedAt,
-  );
+  }) =>
+      Todo(
+        id: id ?? this.id,
+        title: title ?? this.title,
+        content: content ?? this.content,
+        progressStatus: progressStatus ?? this.progressStatus,
+        updatedAt: updatedAt ?? this.updatedAt,
+      );
+
+  static String? validateTitle(String? value) {
+    if (value?.isEmpty ?? true) return 'タイトルを入力してください';
+
+    return null;
+  }
+
+  static String? validateContent(String? value) {
+    if (value?.isEmpty ?? true) return '内容を入力してください';
+
+    return null;
+  }
 }

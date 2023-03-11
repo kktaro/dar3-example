@@ -1,10 +1,10 @@
 import 'package:dart3_sample/feature/todo/presentation/todo_create/create_todo_notifier.dart';
-import 'package:dart3_sample/feature/todo/presentation/todo_create/widget/todo_status_segmented_buttons.dart';
+import 'package:dart3_sample/feature/todo/presentation/widget/todo_status_segmented_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-class TodoCreateScreen extends ConsumerWidget {
+final class TodoCreateScreen extends ConsumerWidget {
   TodoCreateScreen({super.key});
 
   final formKey = GlobalKey<FormState>();
@@ -29,44 +29,30 @@ class TodoCreateScreen extends ConsumerWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   TextFormField(
-                    controller: ref
-                        .watch(createTodoNotifierProvider.notifier)
-                        .titleController,
+                    controller: _todoNotifire(ref).titleController,
                     decoration: const InputDecoration(
                       labelText: 'タイトル',
                     ),
                     maxLength: 50,
-                    onChanged: ref
-                        .read(createTodoNotifierProvider.notifier)
-                        .updateTitle,
-                    validator: ref
-                        .read(createTodoNotifierProvider.notifier)
-                        .validateTitle,
+                    onChanged: _todoNotifire(ref).updateTitle,
+                    validator: _todoNotifire(ref).validateTitle,
                   ),
                   _spacer(),
                   TextFormField(
-                    controller: ref
-                        .watch(createTodoNotifierProvider.notifier)
-                        .contentController,
+                    controller: _todoNotifire(ref).contentController,
                     maxLines: 5,
                     decoration: const InputDecoration(
                       labelText: '内容',
                     ),
                     maxLength: 500,
-                    onChanged: ref
-                        .read(createTodoNotifierProvider.notifier)
-                        .updateContent,
-                    validator: ref
-                        .read(createTodoNotifierProvider.notifier)
-                        .validateContent,
+                    onChanged: _todoNotifire(ref).updateContent,
+                    validator: _todoNotifire(ref).validateContent,
                   ),
                   _spacer(),
                   TodoStatusSegmentedButtons(
                     selectedStatus:
                         ref.watch(createTodoNotifierProvider).progressStatus,
-                    onSelectSelection: ref
-                        .read(createTodoNotifierProvider.notifier)
-                        .updateProgressStatus,
+                    onSelectSelection: _todoNotifire(ref).updateProgressStatus,
                   ),
                   _spacer(),
                   Row(
@@ -80,9 +66,7 @@ class TodoCreateScreen extends ConsumerWidget {
                         onPressed: () {
                           if (!formKey.currentState!.validate()) return;
 
-                          ref
-                              .read(createTodoNotifierProvider.notifier)
-                              .addTodo();
+                          _todoNotifire(ref).addTodo();
                           context.go('/');
                         },
                         icon: const Icon(Icons.add),
@@ -100,4 +84,7 @@ class TodoCreateScreen extends ConsumerWidget {
   }
 
   Widget _spacer() => const SizedBox(height: 16);
+
+  CreateTodoNotifier _todoNotifire(WidgetRef ref) =>
+      ref.watch(createTodoNotifierProvider.notifier);
 }
