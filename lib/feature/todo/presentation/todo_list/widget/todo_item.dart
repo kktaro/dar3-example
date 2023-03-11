@@ -24,6 +24,14 @@ class TodoItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      leading: Icon(
+        switch(status) {
+          NotStarted() => Icons.radio_button_unchecked,
+          InProgress() => Icons.more_horiz,
+          Finished() => Icons.radio_button_checked,
+        }, 
+        color: Colors.grey,
+      ),
       title: Text(
         title,
         style: const TextStyle(
@@ -50,6 +58,11 @@ class TodoItem extends StatelessWidget {
       ),
       isThreeLine: true,
       dense: true,
+      tileColor: switch(status) {
+        NotStarted() => Colors.transparent,
+        InProgress() => const Color.fromARGB(255, 207, 253, 209),
+        Finished() => const Color.fromARGB(255, 207, 207, 207),
+      },
     );
   }
 }
