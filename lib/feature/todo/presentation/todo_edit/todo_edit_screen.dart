@@ -1,3 +1,4 @@
+import 'package:dart3_sample/feature/router/route_path.dart';
 import 'package:dart3_sample/feature/todo/presentation/todo_edit/edit_todo_notifier.dart';
 import 'package:dart3_sample/feature/todo/presentation/widget/todo_content_form.dart';
 import 'package:dart3_sample/feature/todo/presentation/widget/todo_status_segmented_buttons.dart';
@@ -63,7 +64,7 @@ class TodoEditScreen extends ConsumerWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             TextButton(
-                              onPressed: () => context.go('/'),
+                              onPressed: () => context.go(RouteTodoList().path),
                               child: const Text('cancel'),
                             ),
                             FilledButton.icon(
@@ -71,7 +72,7 @@ class TodoEditScreen extends ConsumerWidget {
                                 if (!formKey.currentState!.validate()) return;
 
                                 _todoNotifier(ref).updateTodo();
-                                context.go('/');
+                                context.go(RouteTodoList().path);
                               },
                               icon: const Icon(Icons.edit),
                               label: const Text('Edit'),

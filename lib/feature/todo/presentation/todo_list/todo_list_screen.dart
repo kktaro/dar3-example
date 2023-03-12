@@ -1,4 +1,5 @@
 import 'package:dart3_sample/feature/common_widget/message_alert_dialog.dart';
+import 'package:dart3_sample/feature/router/route_path.dart';
 import 'package:dart3_sample/feature/todo/domain/usecase/delete_todo_usecase.dart';
 import 'package:dart3_sample/feature/todo/domain/usecase/observe_todo_usecase.dart';
 import 'package:dart3_sample/feature/todo/presentation/todo_list/widget/todo_item.dart';
@@ -50,7 +51,7 @@ final class TodoListScreen extends ConsumerWidget {
                     status: todo.progressStatus,
                     updatedAt: todo.updatedAt,
                     onClickEdit: (id) {
-                      context.push('/edit/$id');
+                      context.push(RouteTodoEdit(id: id).path);
                     },
                     onClickDelete: (id) {
                       showDialog(
@@ -75,7 +76,7 @@ final class TodoListScreen extends ConsumerWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => context.push('/create'),
+        onPressed: () => context.push(RouteTodoCreate().path),
         child: const Icon(Icons.add),
       ),
     );

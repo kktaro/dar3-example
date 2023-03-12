@@ -1,3 +1,4 @@
+import 'package:dart3_sample/feature/router/route_path.dart';
 import 'package:dart3_sample/feature/todo/presentation/todo_create/create_todo_notifier.dart';
 import 'package:dart3_sample/feature/todo/presentation/widget/todo_content_form.dart';
 import 'package:dart3_sample/feature/todo/presentation/widget/todo_status_segmented_buttons.dart';
@@ -50,7 +51,7 @@ class TodoCreateScreen extends ConsumerWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       TextButton(
-                        onPressed: () => context.go('/'),
+                        onPressed: () => context.go(RouteTodoList().path),
                         child: const Text('cancel'),
                       ),
                       FilledButton.icon(
@@ -58,7 +59,7 @@ class TodoCreateScreen extends ConsumerWidget {
                           if (!formKey.currentState!.validate()) return;
 
                           _todoNotifire(ref).addTodo();
-                          context.go('/');
+                          context.go(RouteTodoList().path);
                         },
                         icon: const Icon(Icons.add),
                         label: const Text('Create'),
