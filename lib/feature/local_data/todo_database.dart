@@ -26,6 +26,7 @@ class Todos extends Table {
 @DriftDatabase(tables: [Todos])
 class TodosDatabase extends _$TodosDatabase {
   TodosDatabase() : super(_openConnection());
+  TodosDatabase.test(QueryExecutor e) : super(e);
 
   @override
   int get schemaVersion => 1;
