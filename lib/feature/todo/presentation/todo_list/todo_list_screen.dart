@@ -17,19 +17,10 @@ final class TodoListScreen extends ConsumerWidget {
         title: const Text('TodoList'),
       ),
       body: Center(
-        child: StreamBuilder(
-          stream: ref.watch(observeTodoUsecaseProvider).execute(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              // Loading
-              return const Center(child: CircularProgressIndicator());
-            } else {
-              if (snapshot.hasError) {
-                return const Center(child: Text('ERROR!'));
-              }
-
-              final todos = snapshot.data!;
-
+        child: ref.watch(observeTodoUsecaseProvider).when(
+            loading: () => const Center(child: CircularProgressIndicator()),
+            error: (_, __) => const Center(child: Text('ERROR!')),
+            data: (todos) {
               if (todos.isEmpty) {
                 return const Center(child: Text('TODO is Empty'));
               }
@@ -71,9 +62,7 @@ final class TodoListScreen extends ConsumerWidget {
                 },
                 separatorBuilder: (_, __) => const Divider(),
               );
-            }
-          },
-        ),
+            }),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => context.push(RouteTodoCreate().path),
