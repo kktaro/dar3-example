@@ -1,6 +1,6 @@
 # dart3_sample
 
-Flutter Sampple using Dart3
+Flutter Sample using Dart3
 
 ## Getting Started
 
